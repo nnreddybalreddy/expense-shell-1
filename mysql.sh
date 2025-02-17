@@ -52,7 +52,7 @@ mysql -h db.narendra.shop -uroot -p${mysql_root_password} &>>$LOGFILE
 
 if [ $? -ne 0 ]
 then 
-    echo -e  "password already set"
+    echo -e "$Y password already set $N"
 else 
     mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE 
     VALIDATE $? "$Y root password set $N"       
