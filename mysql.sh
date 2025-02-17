@@ -33,7 +33,7 @@ dnf list installed mysql-server &>>$LOGFILE
 
 if [ $? -eq 0 ]
 then 
-    echo "mysql-server already installed"
+    echo -e "$Y mysql-server already installed $N"
 else 
     dnf install mysql-server -y &>>$LOGFILE 
     VALIDATE $? "mysql-server installation"
