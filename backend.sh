@@ -31,13 +31,13 @@ VALIDATE(){
     fi 
 }
 
-dnf list installed nodejs &>>$LOGFILE
+dnf module disable nodejs -y &>>$LOGFILE 
+VALIDATE $? "nodejs disable"
 
-if [ $? -eq 0 ]
-then 
-    echo "nodejs already installed"
-else 
-    dnf module disable nodejs -y &>>$LOGFILE 
-    VALIDATE $? "mysql-server installation"
-fi 
-    
+dnf module enable nodejs:20 -y &>>$LOGFILE 
+VALIDATE $? "nodejs enable"
+
+dnf install nodejs -y &>>$LOGFILE 
+VALIDATE $? "install nodejs "
+
+
