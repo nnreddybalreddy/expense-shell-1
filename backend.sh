@@ -50,4 +50,19 @@ else
     echo "expense user already"
 fi 
 
+mkdir -p /app &>>$LOGFILE 
+VALIDATE $? "app"
+
+curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$LOGFILE 
+VALIDATE $? "app"
+
+cd /app &>>$LOGFILE 
+VALIDATE $? "app"
+
+rm -rf /app/* &>>$LOGFILE 
+VALIDATE $? "remove app files " 
+
+unzip /tmp/backend.zip &>>$LOGFILE 
+VALIDATE $? "copy backend code"
+
 
