@@ -65,4 +65,12 @@ VALIDATE $? "remove app files "
 unzip /tmp/backend.zip &>>$LOGFILE 
 VALIDATE $? "copy backend code"
 
+npm install &>>$LOGFILE 
+VALIDATE $? "npm install"
+
+cp -rf /home/ec2-user/expense-shell-1/backend.service /etc/systemd/system/backend.service &>>$LOGFILE 
+VALIDATE $? "copied service"
+
+
+
 
