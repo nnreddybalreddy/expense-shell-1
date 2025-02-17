@@ -48,6 +48,7 @@ VALIDATE $? "enable mysqld"
 systemctl start mysqld &>>$LOGFILE 
 VALIDATE $? "start mysqld"
 
+#Below code will be useful for idempotent nature
 mysql -h db.narendra.shop -uroot -p${mysql_root_password} -e 'show databases;' &>>$LOGFILE
 if [ $? -ne 0 ]
 then
