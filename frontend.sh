@@ -1,5 +1,6 @@
 #!/bin/bash
 
+check_root
 
 
 dnf install nginx -y &>>$LOGFILE 

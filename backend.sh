@@ -1,11 +1,11 @@
 #!/bin/bash
 
-./common.sh
+
 
 echo "Enter db password:::"
 read mysql_root_password
 
-
+check_root
 
 dnf module disable nodejs -y &>>$LOGFILE 
 VALIDATE $? "nodejs disable"
