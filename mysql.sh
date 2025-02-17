@@ -48,6 +48,14 @@ VALIDATE $? "enable mysqld"
 systemctl start mysqld &>>$LOGFILE 
 VALIDATE $? "start mysqld"
 
-mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE 
-VALIDATE $? "root password set"
+mysql -h db.narendra.shop -uroot -p${mysql_root_password} &>>$LOGFILE
+
+if [ $? -eq 0 ]
+then 
+    echo "password already set"
+else 
+    mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE 
+    VALIDATE $? "root password set"       
+fi 
+
 
