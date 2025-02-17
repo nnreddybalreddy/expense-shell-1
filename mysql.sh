@@ -49,12 +49,12 @@ systemctl start mysqld &>>$LOGFILE
 VALIDATE $? "start mysqld"
 
 mysql -h db.narendra.shop -uroot -p${mysql_root_password} -e 'show databases;' &>>$LOGFILE
-if [ $? -ne 0 ]
+if [ $? -eq 0 ]
 then 
-    mysql_secure_installation --set-root-pass ${mysql_root_password}  &>>$LOGFILE
-    VALIDATE $? "Password set"  
+    echo "Password all set"   
 else 
-    echo "Password all set"     
+    mysql_secure_installation --set-root-pass ${mysql_root_password}  &>>$LOGFILE
+    VALIDATE $? "Password set"     
 fi 
 
 
