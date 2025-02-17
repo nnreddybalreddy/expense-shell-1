@@ -11,6 +11,9 @@ LOGFILE=/tmp/$SCRIPT_NAME-$TIMESTAMP.log
 
 USERID=$(id -u)
 
+echo "Enter db password:::"
+read mysql_root_password
+
 if [ $USERID -ne 0 ]
 then 
     echo "Be a root user"
@@ -44,4 +47,6 @@ VALIDATE $? "enable mysqld"
 
 systemctl start mysqld &>>$LOGFILE 
 VALIDATE $? "start mysqld"
+
+mysql_secure_installation --set-root-pass ${mysql_root_password}
 
