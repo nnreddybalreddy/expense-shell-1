@@ -40,4 +40,13 @@ VALIDATE $? "nodejs enable"
 dnf install nodejs -y &>>$LOGFILE 
 VALIDATE $? "install nodejs "
 
+id expense &>>$LOGFILE
+
+if [ $? -ne 0 ]
+then 
+    echo "expense user already"
+else 
+    useradd expense
+fi 
+
 
