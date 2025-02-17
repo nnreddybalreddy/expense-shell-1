@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+source ./common.sh
 
 echo "Enter db password:::"
 read mysql_root_password
