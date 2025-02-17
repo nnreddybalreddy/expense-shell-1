@@ -48,9 +48,9 @@ VALIDATE $? "enable mysqld"
 systemctl start mysqld &>>$LOGFILE 
 VALIDATE $? "start mysqld"
 
-mysql -h db.narendra.shop -uroot -p${mysql_root_password} &>>$LOGFILE
+mysql -h db.narendra.shop -uroot -p${mysql_root_password} -e 'show databases;' &>>$LOGFILE
 
-if [ $? -ne 0 ]
+if [ $? -eq 0 ]
 then 
     echo -e "$Y password already set $N"
 else 
