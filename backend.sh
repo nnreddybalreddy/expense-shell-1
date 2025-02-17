@@ -44,7 +44,8 @@ id expense &>>$LOGFILE
 
 if [ $? -ne 0 ]
 then 
-    useradd expense
+    useradd expense &>>$LOGFILE 
+    VALIDATE $? "user add expense"
 else 
     echo "expense user already"
 fi 
