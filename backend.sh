@@ -83,7 +83,7 @@ VALIDATE $? "enable backend"
 dnf install mysql -y >>$LOGFILE 
 VALIDATE $? "mysql install"
 
-mysql -h db.narendra.shop -uroot -p${mysql_root_password} < /app/schema/backend.sql >>$LOGFILE 
+mysql -h db.narendra.shop -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$LOGFILE 
 VALIDATE $? "scheam load"
 
 systemctl restart backend >>$LOGFILE 
