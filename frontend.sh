@@ -11,8 +11,8 @@ LOGFILE=/tmp/$SCRIPT_NAME-$TIMESTAMP.log
 
 USERID=$(id -u)
 
-echo "Enter db password:::"
-read mysql_root_password
+# echo "Enter db password:::"
+# read mysql_root_password
 
 if [ $USERID -ne 0 ]
 then 
