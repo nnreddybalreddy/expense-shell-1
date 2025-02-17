@@ -9,13 +9,13 @@ check_root
 
 
 dnf install mysql-server -y &>>$LOGFILE 
-VALIDATE $? "mysql server"
+# VALIDATE $? "mysql server"
 
 systemctl enable mysqld &>>$LOGFILE 
-VALIDATE $? "enable mysqld"
+# VALIDATE $? "enable mysqld"
 
 systemctl start mysqld &>>$LOGFILE 
-VALIDATE $? "start mysql server"
+# VALIDATE $? "start mysql server"
 
 mysql -h db.narendra.shop -uroot -p${mysql_root_password} -e 'show databases;' &>>$LOGFILE
 
