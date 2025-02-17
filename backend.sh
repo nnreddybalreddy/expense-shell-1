@@ -44,9 +44,9 @@ id expense &>>$LOGFILE
 
 if [ $? -ne 0 ]
 then 
-    echo "expense user already"
-else 
     useradd expense
+else 
+    echo "expense user already"
 fi 
 
 
