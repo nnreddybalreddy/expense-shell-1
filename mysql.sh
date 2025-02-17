@@ -32,29 +32,23 @@ VALIDATE(){
 }
 
 
-dnf list installed mysql-server &>>$LOGFILE
-
-if [ $? -eq 0 ]
-then 
-    echo -e "$Y mysql-server already installed $N"
-else 
-    dnf install mysql-server -y &>>$LOGFILE 
-    VALIDATE $? "mysql-server installation"
-fi 
+dnf install mysql-server -y &>>$LOGFILE 
+VALIDATE $? "mysql server"
 
 systemctl enable mysqld &>>$LOGFILE 
 VALIDATE $? "enable mysqld"
 
 systemctl start mysqld &>>$LOGFILE 
-VALIDATE $? "start mysqld"
+VALIDATE $? "start mysql server"
 
-#Below code will be useful for idempotent nature
 mysql -h db.narendra.shop -uroot -p${mysql_root_password} -e 'show databases;' &>>$LOGFILE
+
 if [ $? -ne 0 ]
-then
+then 
     mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE
-else
+else 
     echo -e "MySQL Root password is already setup...$Y SKIPPING $N"
-fi
+fi 
+
 
 
