@@ -36,5 +36,6 @@ then
     echo "mysql-server already installed"
 else 
     dnf install mysql-server -y &>>$LOGFILE 
+    VALIDATE $? "mysql-server installation"
 fi 
 
