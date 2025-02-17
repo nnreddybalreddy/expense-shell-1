@@ -50,7 +50,7 @@ VALIDATE $? "start mysqld"
 
 mysql -h db.narendra.shop -uroot -p${mysql_root_password} &>>$LOGFILE
 
-if [ $? -eq 0 ]
+if [ $? -ne 0 ]
 then 
     echo "password already set"
 else 
